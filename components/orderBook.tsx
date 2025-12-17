@@ -6,16 +6,14 @@ export default function OrderBook() {
 
   const sortedBids = Object.entries(bids).sort(
     (a, b) => parseFloat(b[0]) - parseFloat(a[0])
-  ); // High → Low
+  ); 
   const sortedAsks = Object.entries(asks).sort(
     (a, b) => parseFloat(a[0]) - parseFloat(b[0])
-  ); // Low → High
+  ); 
 
-  // Calculate max quantities for depth visualization
   const maxBidQty = Math.max(...sortedBids.map(([_, qty]) => qty), 1);
   const maxAskQty = Math.max(...sortedAsks.map(([_, qty]) => qty), 1);
 
-  // spread
   const highestBid = sortedBids.length > 0 ? parseFloat(sortedBids[0][0]) : 0;
   const lowestAsk = sortedAsks.length > 0 ? parseFloat(sortedAsks[0][0]) : 0;
   const spread = (lowestAsk - highestBid).toFixed(4);
