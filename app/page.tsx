@@ -1,5 +1,5 @@
 "use client";
-import OrderBook from "@/components/orderBook";
+import OrderBook from "../components/orderBook";
 import { useBinanceSocket } from "../hooks/useBinanceSocket";
 
 export default function HomePage() {
@@ -7,7 +7,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 relative overflow-hidden">
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -19,10 +18,8 @@ export default function HomePage() {
            Binance BTC/USDT Live Data
         </h1>
 
-        {/*  Order Book Section */}
         <OrderBook />
 
-        {/*  Recent Trades Section */}
         <div className="bg-gray-800/70 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-gray-700 max-w-md mx-auto mt-8">
           <h2 className="text-lg font-semibold mb-3 text-center">
              Recent BTC/USDT Trades

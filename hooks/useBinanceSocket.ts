@@ -13,7 +13,6 @@ export function useBinanceSocket() {
     const orderBook = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@depth");
 
 
-    //  Aggregate Trades
     aggTrade.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const trade: Trade = {
@@ -24,10 +23,8 @@ export function useBinanceSocket() {
       setTrades((prev) => [trade, ...prev].slice(0, 50));
     };
 
-    //  Order Book Deltas
     orderBook.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      // Update bids
       setBids((prev) => {
         const updated = { ...prev };
         for (const [price, qty] of data.b) {
@@ -36,7 +33,6 @@ export function useBinanceSocket() {
         }
         return updated;
       });
-      // Update asks
       setAsks((prev) => {
         const updated = { ...prev };
         for (const [price, qty] of data.a) {
